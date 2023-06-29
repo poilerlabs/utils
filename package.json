@@ -1,14 +1,16 @@
 {
 	"name": "nn-uttls",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Utils functions and hooks",
 	"license": "MIT",
 	"main": "lib/cjs/index.js",
 	"module": "lib/esm/index.js",
 	"types": "lib/types/index.d.ts",
+	"author": "impoiler <hello@suresh.im>",
 	"files": [
 		"lib"
 	],
+	"repository": "https://github.com/impoiler/uttls.git",
 	"scripts": {
 		"build": "rm -rf lib && npm run build:esm && npm run build:cjs",
 		"build:esm": "tsc",
