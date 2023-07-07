@@ -1,17 +1,18 @@
 import {useEffect} from 'react'
 import {KeyboardEventKey} from './interfaces/keyboadKeys'
 
-interface ModifierKeys {
+interface options {
 	altKey?: boolean
 	ctrlKey?: boolean
 	metaKey?: boolean
 	shiftKey?: boolean
+	preventDefault?: boolean
 }
 
 export function useKeyPress(
 	key: KeyboardEventKey | KeyboardEventKey[],
 	callback: () => void,
-	{altKey, ctrlKey, metaKey, shiftKey}: ModifierKeys = {}
+	{altKey, ctrlKey, metaKey, shiftKey, preventDefault = true}: options = {}
 ) {
 	useEffect(() => {
 		function handleKeyPress(event: globalThis.KeyboardEvent) {
@@ -24,7 +25,7 @@ export function useKeyPress(
 					(typeof metaKey === 'undefined' || event.metaKey === metaKey) &&
 					(typeof shiftKey === 'undefined' || event.shiftKey === shiftKey)
 				) {
-					event.preventDefault()
+					preventDefault && event.preventDefault()
 					callback()
 				}
 			}

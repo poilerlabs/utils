@@ -255,37 +255,7 @@ type MultimediaKeys =
 	| 'MediaStop'
 	| 'MediaTrackNext'
 	| 'MediaTrackPrevious'
-type TVControlKeys =
-	| 'TV'
-	| 'TV3DMode'
-	| 'TVAntennaCable'
-	| 'TVAudioDescription'
-	| 'TVAudioDescriptionMixDown'
-	| 'TVAudioDescriptionMixUp'
-	| 'TVContentsMenu'
-	| 'TVDataService'
-	| 'TVInput'
-	| 'TVInputComponent1'
-	| 'TVInputComponent2'
-	| 'TVInputComposite1'
-	| 'TVInputComposite2'
-	| 'TVInputHDMI1'
-	| 'TVInputHDMI2'
-	| 'TVInputHDMI3'
-	| 'TVInputHDMI4'
-	| 'TVInputVGA1'
-	| 'TVMediaContext'
-	| 'TVNetwork'
-	| 'TVNumberEntry'
-	| 'TVPower'
-	| 'TVRadioService'
-	| 'TVSatellite'
-	| 'TVSatelliteBS'
-	| 'TVSatelliteCS'
-	| 'TVSatelliteToggle'
-	| 'TVTerrestrialAnalog'
-	| 'TVTerrestrialDigital'
-	| 'TVTimer'
+
 type MediaControllerKeys =
 	| 'AVRInput'
 	| 'AVRPower'
@@ -370,36 +340,7 @@ type DocumentKeys =
 	| 'MailForward'
 	| 'MailReply'
 	| 'MailSend'
-type ApplicationSelectorKeys =
-	| 'LaunchCalculator'
-	| 'LaunchCalendar'
-	| 'LaunchContacts'
-	| 'LaunchMail'
-	| 'LaunchMediaPlayer'
-	| 'LaunchMusicPlayer'
-	| 'LaunchMyComputer'
-	| 'LaunchPhone'
-	| 'LaunchScreenSaver'
-	| 'LaunchSpreadsheet'
-	| 'LaunchWebBrowser'
-	| 'LaunchWebCam'
-	| 'LaunchWordProcessor'
-	| 'LaunchApplication1'
-	| 'LaunchApplication2'
-	| 'LaunchApplication3'
-	| 'LaunchApplication4'
-	| 'LaunchApplication5'
-	| 'LaunchApplication6'
-	| 'LaunchApplication7'
-	| 'LaunchApplication8'
-	| 'LaunchApplication9'
-	| 'LaunchApplication10'
-	| 'LaunchApplication11'
-	| 'LaunchApplication12'
-	| 'LaunchApplication13'
-	| 'LaunchApplication14'
-	| 'LaunchApplication15'
-	| 'LaunchApplication16'
+
 type BrowserControlKeys =
 	| 'BrowserBack'
 	| 'BrowserFavorites'
@@ -408,19 +349,31 @@ type BrowserControlKeys =
 	| 'BrowserRefresh'
 	| 'BrowserSearch'
 	| 'BrowserStop'
-type KoreanKeyboardsOnly = 'HangulMode' | 'HanjaMode' | 'JunjaMode'
 
 type DeprecatedWhitespaceKey = 'Spacebar'
 type SpecialValueKey = 'Unidentified'
 
-/**
- * @link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#editing_keys
- * The types are the standard key values that can be in event.key (KeyboardEvent.key),
- *
- * usage:
- * const actionKey : KeyboardEventKey = "ArrowUp" //<- IntelliSense
- * keyboard key behaviour
- */
+type SymbolKeys =
+	| '!'
+	| '@'
+	| '#'
+	| '$'
+	| '%'
+	| '^'
+	| '&'
+	| '*'
+	| '('
+	| ')'
+	| '/'
+	| '{'
+	| '}'
+	| '-'
+	| '+'
+	| '|'
+	| '?'
+	| '`'
+	| '~'
+
 export declare type KeyboardEventKey =
 	| DeprecatedWhitespaceKey
 	| SpecialValueKey
@@ -435,13 +388,11 @@ export declare type KeyboardEventKey =
 	| FunctionKeys
 	| PhoneKeys
 	| MultimediaKeys
-	| TVControlKeys
 	| MediaControllerKeys
 	| SpeechRecognitionKeys
 	| DocumentKeys
-	| ApplicationSelectorKeys
 	| BrowserControlKeys
 	| NumericKeypadKeys
 	| UpperAlpha
 	| LowerAlpha
-	| KoreanKeyboardsOnly
+	| SymbolKeys

@@ -16,7 +16,7 @@ The `useClipboard` function returns an object with three properties: `copied`, `
 ### Usage
 
 ```typescript
-import {useClipboard} from 'nn-uttls'
+import {useClipboard} from '@poiler/utils'
 
 export default function App() {
 	const {copied, copyToClipboard, error} = useClipboard()
@@ -50,7 +50,7 @@ The `useDebounce` hook returns a debounced version of the original function.
 ### Usage
 
 ```typescript
-import {useDebounce} from 'nn-uttls'
+import {useDebounce} from '@poiler/utils'
 import {ChangeEvent} from 'react'
 
 export default function App() {
@@ -79,7 +79,7 @@ The `useScrollPosition` hook returns the current scroll position of the window.
 ### Usage
 
 ```typescript
-import {useScrollPosition} from 'nn-uttls'
+import {useScrollPosition} from '@poiler/utils'
 
 export default function App() {
 	const scrolledPosition = useScrollPosition()
@@ -111,7 +111,7 @@ The useKeyPress hook accepts the following parameters:
 ### Usage
 
 ```typescript
-import {useKeyPress} from 'nn-uttls'
+import {useKeyPress} from '@poiler/utils'
 import {useState} from 'react'
 
 export default function App() {
@@ -130,7 +130,7 @@ export default function App() {
 This is a custom hook in TypeScript that sets focus on an input element when it mounts.
 
 ```typescript
-import {useInputFocusRef} from 'nn-uttls'
+import {useInputFocusRef} from '@poiler/utils'
 
 export default function App() {
 	const focusedInput = useInputFocusRef()
@@ -150,7 +150,7 @@ The `useWindowClick` hook allows you to execute a callback function when a click
 - Make sure to `stopPropagation()` on child component to avoid side Effects
 
 ```typescript
-import {useWindowClick} from 'nn-uttls'
+import {useWindowClick} from '@poiler/utils'
 import {useState} from 'react'
 
 export default function App() {
@@ -187,7 +187,7 @@ The useFetchData hook returns an object with the following properties:
 ### Usage
 
 ```typescript
-import {useFetchData} from 'nn-uttls'
+import {useFetchData} from '@poiler/utils'
 
 export default function App() {
 	const {data, loading, error} = useFetchData('https://api.example.com/data')

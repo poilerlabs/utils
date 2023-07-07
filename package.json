@@ -1,5 +1,5 @@
 {
-	"name": "nn-uttls",
+	"name": "@poiler/utils",
 	"version": "1.0.3",
 	"description": "Utils functions and hooks",
 	"license": "MIT",
@@ -10,18 +10,18 @@
 	"files": [
 		"lib"
 	],
-	"repository": "https://github.com/impoiler/uttls.git",
+	"repository": "https://github.com/impoiler/utils.git",
 	"scripts": {
 		"build": "rm -rf lib && npm run build:esm && npm run build:cjs",
 		"build:esm": "tsc",
 		"build:cjs": "tsc --module CommonJS --outDir lib/cjs",
-		"patch": "npm version patch"
+		"patch": "npm version patch",
+		"publish": "npm publish"
 	},
 	"dependencies": {
 		"react": "^18.2.0"
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.14",
-		"esdoc": "^1.1.0"
+		"@types/react": "^18.2.14"
 	}
 }
