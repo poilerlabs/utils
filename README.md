@@ -100,13 +100,13 @@ The useKeyPress hook accepts the following parameters:
 
 `modifiers` : (optional) An object specifying additional modifier keys to be pressed along with the specified key. The available modifier keys are:
 
-- `altKey (default: undefined)`: Set to true to require the Alt key to be pressed.
+- `altKey (default: false)`: Set to true to require the Alt key to be pressed.
 
-- `ctrlKey (default: undefined)`: Set to true to require the Ctrl key to be pressed.
+- `ctrlKey (default: false)`: Set to true to require the Ctrl key to be pressed.
 
-- `metaKey (default: undefined)`: Set to true to require the Meta/Command key to be pressed.
+- `metaKey (default: false)`: Set to true to require the Meta/Command key to be pressed.
 
-- `shiftKey (default: undefined)`: Set to true to require the Shift key to be pressed.
+- `shiftKey (default: false)`: Set to true to require the Shift key to be pressed.
 
 ### Usage
 
@@ -122,6 +122,55 @@ export default function App() {
 	})
 
 	return <>{showPopup && <Popup />}</>
+}
+```
+
+## ⬆️ useFileUploader
+
+The `useFileUploader` hook to upload files to the server with progress tracking functionality is using the XHR request method under the hood.
+
+### Result
+
+The useFileUploader hook returns you this `uploadFile` and progress.
+
+The uploadFile function will accept the following parameters:
+
+`url` : endpoint to the server where you want to upload the file
+
+`file` : You have to pass File as `Blob` | `File` type
+
+`options` : You can provide additional options like authentication headers and content type, etc... in this format. `{ Authorization: 'Bearer xzy',contentType:"multipart/form"}`
+
+### Usage
+
+```
+import {useEffect, useState} from 'react'
+import {useFileUploader} from '@poiler/utils'
+
+export default function Home() {
+	const [file, setFile] = useState<File | null>(null)
+	const {progress, uploadFile} = useFileUploader()
+
+	useEffect(() => {
+		if (!file) return
+		uploadFile('https://example.com/api/upload', file as File, {
+			Authorization: 'Bearer YOUR_TOKEN',
+		}).then((response) => {
+				console.log(response)
+			}).catch((err) => {
+				console.log(err)
+			})
+	}, [file])
+
+	return (
+		<>
+			<input type='file' onChange={(e) => {
+					setFile(e.target.files && e.target.files[0])
+				}}
+			/>
+			<Progress percentage={progress} />
+		</>
+	)
 }
 ```
 
