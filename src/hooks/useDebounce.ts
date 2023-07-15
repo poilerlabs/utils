@@ -1,9 +1,9 @@
 import {useRef} from 'react'
 
-export const useDebounce = <T extends any[]>(
+export function useDebounce<T extends any[]>(
 	func: (...args: T) => void,
 	delay: number | undefined
-): ((...args: T) => void) => {
+): (...args: T) => void {
 	const timeoutRef = useRef<any | undefined>(undefined)
 
 	return (...args: T) => {

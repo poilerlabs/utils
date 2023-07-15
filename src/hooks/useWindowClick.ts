@@ -6,7 +6,7 @@
  */
 import {useEffect} from 'react'
 
-export const useWindowClick = (callback: () => void) => {
+export function useWindowClick(callback: () => void) {
 	useEffect(() => {
 		const handleClick = (event: MouseEvent) => {
 			event.stopPropagation()

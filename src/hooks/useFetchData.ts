@@ -12,7 +12,7 @@ type ErrorType = {
 	message: string
 }
 
-export const useFetchData = (url: string) => {
+export function useFetchData(url: string) {
 	const [data, setData] = useState<any | null>(null)
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState<ErrorType | null>(null)
