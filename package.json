@@ -1,6 +1,6 @@
 {
 	"name": "@poiler/utils",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Utils functions and hooks",
 	"license": "MIT",
 	"main": "lib/cjs/index.js",
