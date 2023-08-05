@@ -16,24 +16,25 @@ The `useClipboard` function returns an object with three properties: `copied`, `
 ### Usage
 
 ```typescript
-import {useClipboard} from '@poiler/utils'
+import { useClipboard } from "@poiler/utils";
 
 export default function App() {
-	const {copied, copyToClipboard, error} = useClipboard()
+  const { copied, copyToClipboard, error } = useClipboard();
 
-	return (
-		<>
-			{copied && 'Coppied to clipboard ✅'}
-			{error && 'Something went wrong ❌'}
+  return (
+    <>
+      {copied && "Coppied to clipboard ✅"}
+      {error && "Something went wrong ❌"}
 
-			<button
-				onClick={() => {
-					copyToClipboard('Content that you want to copy')
-				}}>
-				Copy text
-			</button>
-		</>
-	)
+      <button
+        onClick={() => {
+          copyToClipboard("Content that you want to copy");
+        }}
+      >
+        Copy text
+      </button>
+    </>
+  );
 }
 ```
 
@@ -50,26 +51,27 @@ The `useDebounce` hook returns a debounced version of the original function.
 ### Usage
 
 ```typescript
-import {useDebounce} from '@poiler/utils'
-import {ChangeEvent} from 'react'
+import { useDebounce } from "@poiler/utils";
+import { ChangeEvent } from "react";
 
 export default function App() {
-	function handleChange(e: ChangeEvent<HTMLInputElement>) {
-		debouncedOpration(e.target.value)
-	}
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    debouncedOpration(e.target.value);
+  }
 
-	async function handleSearch(query: string) {
-		await fetch(`https://example.com/api?search=${query}`)
-	}
+  async function handleSearch(query: string) {
+    await fetch(`https://example.com/api?search=${query}`);
+  }
 
-	const debouncedOpration = useDebounce(handleSearch, 500)
+  const debouncedOpration = useDebounce(handleSearch, 500);
 
-	return (
-		<>
-			<input onChange={handleChange} type='text' />
-		</>
-	)
+  return (
+    <>
+      <input onChange={handleChange} type="text" />
+    </>
+  );
 }
+
 ```
 
 ## ⏬ useScrollPosition
@@ -79,13 +81,14 @@ The `useScrollPosition` hook returns the current scroll position of the window.
 ### Usage
 
 ```typescript
-import {useScrollPosition} from '@poiler/utils'
+import { useScrollPosition } from "@poiler/utils";
 
 export default function App() {
-	const scrolledPosition = useScrollPosition()
+  const scrolledPosition = useScrollPosition();
 
-	return <>{scrolledPosition > 100 ? <StickeyNav /> : <NormalNav />}</>
+  return <>{scrolledPosition > 100 ? <StickeyNav /> : <NormalNav />}</>;
 }
+
 ```
 
 ## ⌨️ useKeyPress
@@ -111,17 +114,17 @@ The useKeyPress hook accepts the following parameters:
 ### Usage
 
 ```typescript
-import {useKeyPress} from '@poiler/utils'
-import {useState} from 'react'
+import { useKeyPress } from "@poiler/utils";
+import { useState } from "react";
 
 export default function App() {
-	const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
 
-	useKeyPress('Escape', () => {
-		setShowPopup(false)
-	})
+  useKeyPress("Escape", () => {
+    setShowPopup(false);
+  });
 
-	return <>{showPopup && <Popup />}</>
+  return <>{showPopup && <Popup />}</>;
 }
 ```
 
@@ -144,33 +147,37 @@ The uploadFile function will accept the following parameters:
 ### Usage
 
 ```
-import {useEffect, useState} from 'react'
-import {useFileUploader} from '@poiler/utils'
+import { useEffect, useState } from "react";
+import { useFileUploader } from "@poiler/utils";
 
 export default function Home() {
-	const [file, setFile] = useState<File | null>(null)
-	const {progress, uploadFile} = useFileUploader()
+  const [file, setFile] = useState<File | null>(null);
+  const { progress, uploadFile } = useFileUploader();
 
-	useEffect(() => {
-		if (!file) return
-		uploadFile('https://example.com/api/upload', file as File, {
-			Authorization: 'Bearer YOUR_TOKEN',
-		}).then((response) => {
-				console.log(response)
-			}).catch((err) => {
-				console.log(err)
-			})
-	}, [file])
+  useEffect(() => {
+    if (!file) return;
+    uploadFile("https://example.com/api/upload", file as File, {
+      Authorization: "Bearer YOUR_TOKEN",
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [file]);
 
-	return (
-		<>
-			<input type='file' onChange={(e) => {
-					setFile(e.target.files && e.target.files[0])
-				}}
-			/>
-			<Progress percentage={progress} />
-		</>
-	)
+  return (
+    <>
+      <input
+        type="file"
+        onChange={(e) => {
+          setFile(e.target.files && e.target.files[0]);
+        }}
+      />
+      <Progress percentage={progress} />
+    </>
+  );
 }
 ```
 
@@ -179,16 +186,16 @@ export default function Home() {
 This is a custom hook in TypeScript that sets focus on an input element when it mounts.
 
 ```typescript
-import {useInputFocusRef} from '@poiler/utils'
+import { useInputFocusRef } from "@poiler/utils";
 
 export default function App() {
-	const focusedInput = useInputFocusRef()
+  const focusedInput = useInputFocusRef();
 
-	return (
-		<>
-			<input ref={focesedInput} type='text' />
-		</>
-	)
+  return (
+    <>
+      <input ref={focesedInput} type="text" />
+    </>
+  );
 }
 ```
 
@@ -199,17 +206,17 @@ The `useWindowClick` hook allows you to execute a callback function when a click
 - Make sure to `stopPropagation()` on child component to avoid side Effects
 
 ```typescript
-import {useWindowClick} from '@poiler/utils'
-import {useState} from 'react'
+import { useWindowClick } from "@poiler/utils";
+import { useState } from "react";
 
 export default function App() {
-	const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
 
-	useWindowClick(() => {
-		setShowPopup(false)
-	})
+  useWindowClick(() => {
+    setShowPopup(false);
+  });
 
-	return <>{showPopup && <Popup />}</>
+  return <>{showPopup && <Popup />}</>;
 }
 ```
 
@@ -236,19 +243,19 @@ The useFetchData hook returns an object with the following properties:
 ### Usage
 
 ```typescript
-import {useFetchData} from '@poiler/utils'
+import { useFetchData } from "@poiler/utils";
 
 export default function App() {
-	const {data, loading, error} = useFetchData('https://api.example.com/data')
+  const { data, loading, error } = useFetchData("https://api.example.com/data");
 
-	if (loading) {
-		return <div>Loading...</div>
-	}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-	if (error) {
-		return <div>Error: {error.message}</div>
-	}
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-	return <div>{data}</div>
+  return <div>{data}</div>;
 }
 ```
