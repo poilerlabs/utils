@@ -143,7 +143,7 @@ The uploadFile function will accept the following parameters:
 
 ### Usage
 
-```
+```typescript
 import { useEffect, useState } from "react";
 import { useFileUploader } from "@poiler/utils";
 
@@ -260,12 +260,8 @@ export default function App() {
 </br>
 </br>
 </br>
-</br>
-</br>
 
 # Utility Functions
-
-</br>
 
 ## 🔠 capitalizeString
 
@@ -277,12 +273,12 @@ string - The parameter "string" is a string value that represents the input stri
 
 ### Usage
 
-```
-import { capitalizeString } from "@poiler/utils";
+```typescript
+import {capitalizeString} from '@poiler/utils'
 
-const smallString = "hello"
+const smallString = 'hello'
 
-const capitalizedString=capitalizeString(smallString)
+const capitalizedString = capitalizeString(smallString)
 
 // Hello
 ```
@@ -297,19 +293,19 @@ duration:number - The `duration` parameter is a number that represents the amoun
 
 ### Usage
 
-```
-import { delay } from "@poiler/utils";
+```typescript
+import {delay} from '@poiler/utils'
 
 async function main() {
-  console.log("Start");
+	console.log('Start')
 
-  await delay(2000); // Delay for 2 seconds
+	await delay(2000) // Delay for 2 seconds
 
-  console.log("After delay");
+	console.log('After delay')
 }
 
-main();
-``` 
+main()
+```
 
 ## 🆔 generateId
 
@@ -317,10 +313,10 @@ The `generateId` generates a random alphanumeric ID.
 
 ### Usage
 
-```
-import { generateId } from "@poiler/utils";
+```typescript
+import {generateId} from '@poiler/utils'
 
-const id=generateId()
+const id = generateId()
 
 // y035svtpglgvo7sxiwel7
 ```
@@ -337,19 +333,18 @@ max:number - The `max` parameter is the maximum value that the random number can
 
 ### Usage
 
-```
+```typescript
 export function randomNumber(min: number = 0, max: number = 99999) {
-  return Math.round(Math.random() * (max - min) + min);
+	return Math.round(Math.random() * (max - min) + min)
 }
 
 function pickRandomFromArray<T>(array: T[]): T {
-  const randomIndex = randomNumber(0, array.length - 1);
-  return array[randomIndex];
+	const randomIndex = randomNumber(0, array.length - 1)
+	return array[randomIndex]
 }
 
-const fruits = ["apple", "banana", "orange", "grape", "kiwi"];
+const fruits = ['apple', 'banana', 'orange', 'grape', 'kiwi']
 
-const randomFruit = pickRandomFromArray(fruits);
-console.log(`Picked a random fruit: ${randomFruit}`);
-
+const randomFruit = pickRandomFromArray(fruits)
+console.log(`Picked a random fruit: ${randomFruit}`)
 ```
