@@ -16,25 +16,24 @@ The `useClipboard` function returns an object with three properties: `copied`, `
 ### Usage
 
 ```typescript
-import { useClipboard } from "@poiler/utils";
+import {useClipboard} from '@poiler/utils'
 
 export default function App() {
-  const { copied, copyToClipboard, error } = useClipboard();
+	const {copied, copyToClipboard, error} = useClipboard()
 
-  return (
-    <>
-      {copied && "Coppied to clipboard ✅"}
-      {error && "Something went wrong ❌"}
+	return (
+		<>
+			{copied && 'Coppied to clipboard ✅'}
+			{error && 'Something went wrong ❌'}
 
-      <button
-        onClick={() => {
-          copyToClipboard("Content that you want to copy");
-        }}
-      >
-        Copy text
-      </button>
-    </>
-  );
+			<button
+				onClick={() => {
+					copyToClipboard('Content that you want to copy')
+				}}>
+				Copy text
+			</button>
+		</>
+	)
 }
 ```
 
@@ -51,27 +50,26 @@ The `useDebounce` hook returns a debounced version of the original function.
 ### Usage
 
 ```typescript
-import { useDebounce } from "@poiler/utils";
-import { ChangeEvent } from "react";
+import {useDebounce} from '@poiler/utils'
+import {ChangeEvent} from 'react'
 
 export default function App() {
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    debouncedOpration(e.target.value);
-  }
+	function handleChange(e: ChangeEvent<HTMLInputElement>) {
+		debouncedOpration(e.target.value)
+	}
 
-  async function handleSearch(query: string) {
-    await fetch(`https://example.com/api?search=${query}`);
-  }
+	async function handleSearch(query: string) {
+		await fetch(`https://example.com/api?search=${query}`)
+	}
 
-  const debouncedOpration = useDebounce(handleSearch, 500);
+	const debouncedOpration = useDebounce(handleSearch, 500)
 
-  return (
-    <>
-      <input onChange={handleChange} type="text" />
-    </>
-  );
+	return (
+		<>
+			<input onChange={handleChange} type='text' />
+		</>
+	)
 }
-
 ```
 
 ## ⏬ useScrollPosition
@@ -81,14 +79,13 @@ The `useScrollPosition` hook returns the current scroll position of the window.
 ### Usage
 
 ```typescript
-import { useScrollPosition } from "@poiler/utils";
+import {useScrollPosition} from '@poiler/utils'
 
 export default function App() {
-  const scrolledPosition = useScrollPosition();
+	const scrolledPosition = useScrollPosition()
 
-  return <>{scrolledPosition > 100 ? <StickeyNav /> : <NormalNav />}</>;
+	return <>{scrolledPosition > 100 ? <StickeyNav /> : <NormalNav />}</>
 }
-
 ```
 
 ## ⌨️ useKeyPress
@@ -114,17 +111,17 @@ The useKeyPress hook accepts the following parameters:
 ### Usage
 
 ```typescript
-import { useKeyPress } from "@poiler/utils";
-import { useState } from "react";
+import {useKeyPress} from '@poiler/utils'
+import {useState} from 'react'
 
 export default function App() {
-  const [showPopup, setShowPopup] = useState(false);
+	const [showPopup, setShowPopup] = useState(false)
 
-  useKeyPress("Escape", () => {
-    setShowPopup(false);
-  });
+	useKeyPress('Escape', () => {
+		setShowPopup(false)
+	})
 
-  return <>{showPopup && <Popup />}</>;
+	return <>{showPopup && <Popup />}</>
 }
 ```
 
@@ -186,16 +183,16 @@ export default function Home() {
 This is a custom hook in TypeScript that sets focus on an input element when it mounts.
 
 ```typescript
-import { useInputFocusRef } from "@poiler/utils";
+import {useInputFocusRef} from '@poiler/utils'
 
 export default function App() {
-  const focusedInput = useInputFocusRef();
+	const focusedInput = useInputFocusRef()
 
-  return (
-    <>
-      <input ref={focesedInput} type="text" />
-    </>
-  );
+	return (
+		<>
+			<input ref={focesedInput} type='text' />
+		</>
+	)
 }
 ```
 
@@ -206,17 +203,17 @@ The `useWindowClick` hook allows you to execute a callback function when a click
 - Make sure to `stopPropagation()` on child component to avoid side Effects
 
 ```typescript
-import { useWindowClick } from "@poiler/utils";
-import { useState } from "react";
+import {useWindowClick} from '@poiler/utils'
+import {useState} from 'react'
 
 export default function App() {
-  const [showPopup, setShowPopup] = useState(false);
+	const [showPopup, setShowPopup] = useState(false)
 
-  useWindowClick(() => {
-    setShowPopup(false);
-  });
+	useWindowClick(() => {
+		setShowPopup(false)
+	})
 
-  return <>{showPopup && <Popup />}</>;
+	return <>{showPopup && <Popup />}</>
 }
 ```
 
@@ -243,19 +240,116 @@ The useFetchData hook returns an object with the following properties:
 ### Usage
 
 ```typescript
-import { useFetchData } from "@poiler/utils";
+import {useFetchData} from '@poiler/utils'
 
 export default function App() {
-  const { data, loading, error } = useFetchData("https://api.example.com/data");
+	const {data, loading, error} = useFetchData('https://api.example.com/data')
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+	if (loading) {
+		return <div>Loading...</div>
+	}
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+	if (error) {
+		return <div>Error: {error.message}</div>
+	}
 
-  return <div>{data}</div>;
+	return <div>{data}</div>
 }
+```
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+# Utility Functions
+
+</br>
+
+## 🔠 capitalizeString
+
+The function `capitalizeString` takes a string as input and returns the same string with the first letter capitalized.
+
+### Parameters
+
+string - The parameter "string" is a string value that represents the input string that needs to be capitalized.
+
+### Usage
+
+```
+import { capitalizeString } from "@poiler/utils";
+
+const smallString = "hello"
+
+const capitalizedString=capitalizeString(smallString)
+
+// Hello
+```
+
+## ⌛ delay
+
+The `delay` function returns a promise that resolves after a specified duration.it can be used to add custom delay to any function.
+
+### Parameters
+
+duration:number - The `duration` parameter is a number that represents the amount of time in milliseconds that the delay should last.
+
+### Usage
+
+```
+import { delay } from "@poiler/utils";
+
+async function main() {
+  console.log("Start");
+
+  await delay(2000); // Delay for 2 seconds
+
+  console.log("After delay");
+}
+
+main();
+```
+
+## 🆔 generateId
+
+The `generateId` generates a random alphanumeric ID.
+
+### Usage
+
+```
+import { generateId } from "@poiler/utils";
+
+const id=generateId()
+
+// y035svtpglgvo7sxiwel7
+```
+
+## 🔢 randomNumber
+
+The function randomNumber generates a random number between a specified minimum and maximum value.
+
+### Parameters
+
+min : number - The minimum value that the random number can be. If no value is provided, the default minimum value is 0.
+
+max:number - The `max` parameter is the maximum value that the random number can be. By default, it is set to 99999.
+
+### Usage
+
+```
+export function randomNumber(min: number = 0, max: number = 99999) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+function pickRandomFromArray<T>(array: T[]): T {
+  const randomIndex = randomNumber(0, array.length - 1);
+  return array[randomIndex];
+}
+
+const fruits = ["apple", "banana", "orange", "grape", "kiwi"];
+
+const randomFruit = pickRandomFromArray(fruits);
+console.log(`Picked a random fruit: ${randomFruit}`);
+
 ```
