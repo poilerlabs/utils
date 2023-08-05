@@ -16,25 +16,27 @@ The `useClipboard` function returns an object with three properties: `copied`, `
 ### Usage
 
 ```typescript
-import {useClipboard} from '@poiler/utils'
+import { useClipboard } from "@poiler/utils";
 
 export default function App() {
-	const {copied, copyToClipboard, error} = useClipboard()
+  const { copied, copyToClipboard, error } = useClipboard();
 
-	return (
-		<>
-			{copied && 'Coppied to clipboard ✅'}
-			{error && 'Something went wrong ❌'}
+  return (
+    <>
+      {copied && "Coppied to clipboard ✅"}
+      {error && "Something went wrong ❌"}
 
-			<button
-				onClick={() => {
-					copyToClipboard('Content that you want to copy')
-				}}>
-				Copy text
-			</button>
-		</>
-	)
+      <button
+        onClick={() => {
+          copyToClipboard("Content that you want to copy");
+        }}
+      >
+        Copy text
+      </button>
+    </>
+  );
 }
+
 ```
 
 ## ⌚ useDebounce
