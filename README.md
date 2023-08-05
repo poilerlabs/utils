@@ -52,26 +52,27 @@ The `useDebounce` hook returns a debounced version of the original function.
 ### Usage
 
 ```typescript
-import {useDebounce} from '@poiler/utils'
-import {ChangeEvent} from 'react'
+import { useDebounce } from "@poiler/utils";
+import { ChangeEvent } from "react";
 
 export default function App() {
-	function handleChange(e: ChangeEvent<HTMLInputElement>) {
-		debouncedOpration(e.target.value)
-	}
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    debouncedOpration(e.target.value);
+  }
 
-	async function handleSearch(query: string) {
-		await fetch(`https://example.com/api?search=${query}`)
-	}
+  async function handleSearch(query: string) {
+    await fetch(`https://example.com/api?search=${query}`);
+  }
 
-	const debouncedOpration = useDebounce(handleSearch, 500)
+  const debouncedOpration = useDebounce(handleSearch, 500);
 
-	return (
-		<>
-			<input onChange={handleChange} type='text' />
-		</>
-	)
+  return (
+    <>
+      <input onChange={handleChange} type="text" />
+    </>
+  );
 }
+
 ```
 
 ## ⏬ useScrollPosition
@@ -185,16 +186,16 @@ export default function Home() {
 This is a custom hook in TypeScript that sets focus on an input element when it mounts.
 
 ```typescript
-import {useInputFocusRef} from '@poiler/utils'
+import { useInputFocusRef } from "@poiler/utils";
 
 export default function App() {
-	const focusedInput = useInputFocusRef()
+  const focusedInput = useInputFocusRef();
 
-	return (
-		<>
-			<input ref={focesedInput} type='text' />
-		</>
-	)
+  return (
+    <>
+      <input ref={focesedInput} type="text" />
+    </>
+  );
 }
 ```
 
@@ -242,20 +243,20 @@ The useFetchData hook returns an object with the following properties:
 ### Usage
 
 ```typescript
-import {useFetchData} from '@poiler/utils'
+import { useFetchData } from "@poiler/utils";
 
 export default function App() {
-	const {data, loading, error} = useFetchData('https://api.example.com/data')
+  const { data, loading, error } = useFetchData("https://api.example.com/data");
 
-	if (loading) {
-		return <div>Loading...</div>
-	}
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-	if (error) {
-		return <div>Error: {error.message}</div>
-	}
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-	return <div>{data}</div>
+  return <div>{data}</div>;
 }
 ```
 
@@ -299,11 +300,11 @@ duration:number - The `duration` parameter is a number that represents the amoun
 import {delay} from '@poiler/utils'
 
 async function main() {
-	console.log('Start')
+ console.log('Start')
 
-	await delay(2000) // Delay for 2 seconds
+ await delay(2000) // Delay for 2 seconds
 
-	console.log('After delay')
+ console.log('After delay')
 }
 
 main()
