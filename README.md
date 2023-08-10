@@ -337,9 +337,7 @@ max:number - The `max` parameter is the maximum value that the random number can
 ### Usage
 
 ```typescript
-export function randomNumber(min: number = 0, max: number = 99999) {
-	return Math.round(Math.random() * (max - min) + min)
-}
+import {randomNumber} from '@poiler/utils'
 
 function pickRandomFromArray<T>(array: T[]): T {
 	const randomIndex = randomNumber(0, array.length - 1)
