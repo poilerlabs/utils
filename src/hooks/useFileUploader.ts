@@ -1,7 +1,12 @@
 import {useState} from 'react'
 
 interface UploadOptions {
-	[key: string]: string
+	headers?: {
+		[key: string]: string
+	}
+	method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+	type?: 'File' | 'FormData' | 'Blob'
+	formField?: string
 }
 
 /**
@@ -40,18 +45,24 @@ export function useFileUploader() {
 				}
 			}
 
-			xhr.open('POST', url, true)
+			xhr.open(options?.method || 'POST', url, true)
 
 			// Set additional headers or options
-			if (options && typeof options === 'object') {
-				for (const key in options) {
-					xhr.setRequestHeader(key, options[key])
+			if (options?.headers && typeof options.headers === 'object') {
+				for (const key in options.headers) {
+					xhr.setRequestHeader(key, options.headers[key])
 				}
 			}
 
-			const formData = new FormData()
-			formData.append('file', file)
-			xhr.send(formData)
+			switch (options?.type) {
+				case 'Blob' || 'Blob':
+					xhr.send(file)
+					break
+				default:
+					const formData = new FormData()
+					formData.append(options?.formField || 'file', file)
+					xhr.send(formData)
+			}
 		})
 	}
 
