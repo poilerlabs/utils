@@ -17,9 +17,31 @@ interface UploadOptions {
  */
 export function useFileUploader() {
 	const [progress, setProgress] = useState(0)
+	const [startTime, setStartTime] = useState<number | null>(null)
+
+	const speed = () => {
+		if (startTime !== null && progress > 0) {
+			const currentTime = Date.now()
+			const elapsedTime = currentTime - startTime
+			const transferSpeed = (progress / elapsedTime) * 1000 // Multiply by 1000 to convert to bytes per second
+			return transferSpeed
+		}
+		return -1 // Return -1 if speed calculation is not possible
+	}
+
+	const ETA = () => {
+		if (startTime !== null && progress > 0) {
+			const currentTime = Date.now()
+			const elapsedTime = currentTime - startTime
+			const estimatedTotalTime = elapsedTime / (progress / 100) - elapsedTime
+			return estimatedTotalTime
+		}
+		return -1 // Return -1 if ETA calculation is not possible
+	}
 
 	const uploadFile = async (url: string, file: string | Blob | File, options?: UploadOptions) => {
 		return new Promise((resolve, reject) => {
+			setStartTime(Date.now())
 			const xhr = new XMLHttpRequest()
 
 			xhr.upload.addEventListener('progress', (event) => {
@@ -66,5 +88,5 @@ export function useFileUploader() {
 		})
 	}
 
-	return {progress, uploadFile}
+	return {progress, uploadFile, ETA, speed}
 }
