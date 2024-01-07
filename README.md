@@ -339,11 +339,6 @@ max:number - The `max` parameter is the maximum value that the random number can
 ```typescript
 import {randomNumber} from '@poiler/utils'
 
-function pickRandomFromArray<T>(array: T[]): T {
-	const randomIndex = randomNumber(0, array.length - 1)
-	return array[randomIndex]
-}
-
 const fruits = ['apple', 'banana', 'orange', 'grape', 'kiwi']
 
 const randomFruit = pickRandomFromArray(fruits)
